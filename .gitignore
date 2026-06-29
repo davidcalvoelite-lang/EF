@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build
+dist/
+build/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# React Native / Expo
+apps/mobile/.expo/
+apps/mobile/dist/
+apps/mobile/android/app/build/
+apps/mobile/ios/build/
+apps/mobile/ios/Pods/
+*.jks
+*.p8
+*.p12
+*.mobileprovision
+
+# NestJS
+apps/backend/dist/
+
+# Docker
+infrastructure/docker/volumes/
+
+# Terraform
+infrastructure/aws/terraform/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Test
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+.cache/

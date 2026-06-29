@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ef-config
+  namespace: ef-platform
+data:
+  NODE_ENV: "production"
+  API_GATEWAY_PORT: "3000"
+  AUTH_SERVICE_HOST: "ef-auth-service"
+  AUTH_SERVICE_PORT: "3001"
+  USERS_SERVICE_HOST: "ef-users-service"
+  USERS_SERVICE_PORT: "3002"
+  POSTGRES_HOST: "ef-postgres"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: "ef_db"
+  POSTGRES_USER: "ef_user"
+  MONGODB_URI: "mongodb://ef_user:ef_password@ef-mongodb:27017/ef_mongo?authSource=admin"

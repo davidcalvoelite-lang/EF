@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@ef/common": ["libs/common/src"],
+      "@ef/common/*": ["libs/common/src/*"],
+      "@ef/contracts": ["libs/contracts/src"],
+      "@ef/contracts/*": ["libs/contracts/src/*"],
+      "@ef/database": ["libs/database/src"],
+      "@ef/database/*": ["libs/database/src/*"]
+    }
+  }
+}

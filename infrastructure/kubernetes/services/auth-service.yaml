@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ef-auth-service
+  namespace: ef-platform
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ef-auth-service
+  template:
+    metadata:
+      labels:
+        app: ef-auth-service
+    spec:
+      containers:
+        - name: auth-service
+          image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/ef-auth-service:latest
+          ports:
+            - containerPort: 3001
+          envFrom:
+            - configMapRef:
+                name: ef-config
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ef-secrets
+                  key: POSTGRES_PASSWORD
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: ef-secrets
+                  key: JWT_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ef-auth-service
+  namespace: ef-platform
+spec:
+  selector:
+    app: ef-auth-service
+  ports:
+    - port: 3001
+      targetPort: 3001
