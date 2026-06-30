@@ -1,11 +1,27 @@
-# EF Platform
+# Elite Forge
 
-Monorepo full-stack con arquitectura de microservicios, bases de datos híbridas y despliegue en AWS.
+Monorepo técnico de **Elite Forge** — aplicación móvil de fútbol con perfil de jugador inteligente, red social deportiva, organización de partidos y reservas de canchas.
+
+| Documento | Descripción |
+|-----------|-------------|
+| **[docs/ELITE_FORGE.md](./docs/ELITE_FORGE.md)** | Producto, lógica de negocio, logo, módulos funcionales |
+| Este README | Stack técnico, inicio rápido, infraestructura y despliegue |
+
+## Resumen del producto
+
+- **Perfil inteligente** que evoluciona con partidos, votaciones y tests físicos.
+- **Feed social** tipo red social en la pantalla principal.
+- **Grupos** con líder, administradores y creación de partidos con cupos (8v8, 11v11, etc.).
+- **Partidos** con historial, calendario futuro e invitaciones por notificación.
+- **Amistades** con privacidad configurable y Tag ID de jugador.
+- **Reservas de canchas** conectadas a un dashboard web en tiempo real para dueños.
 
 ## Estructura del Proyecto
 
 ```
 EF/
+├── docs/
+│   └── ELITE_FORGE.md          # Producto, negocio, logo, módulos
 ├── apps/
 │   ├── mobile/                 # React Native + Ignite + Tamagui
 │   │   └── app/
@@ -37,6 +53,88 @@ EF/
 | Contenedores | Docker, Kubernetes |
 | Cloud | AWS (ECR, EKS, RDS, DocumentDB) |
 | CI/CD | GitHub Actions |
+
+## Sistema de Diseño — Paleta de Colores
+
+La identidad visual de **Elite Forge** se basa en cuatro colores predefinidos y una distribución **bicolor simétrica**: el lado izquierdo de la interfaz usa **Verde Esmeralda** y el lado derecho usa **Naranja Oscuro**.
+
+### Colores premeditados
+
+| Color | Hex | Uso |
+|-------|-----|-----|
+| **Naranja Oscuro** | `#FF8C00` | Interfaz (lado derecho) |
+| **Verde Esmeralda** | `#00CEC8` | Interfaz (lado izquierdo) |
+| **Gris Carbón** | `#424242` | Background |
+| **Blanco Puro** | `#FFFFFF` | Letras y texto principal |
+
+### Lógica de distribución
+
+La UI sigue un esquema de **split-color** (división izquierda / derecha):
+
+- **Background general:** `#424242` (Gris Carbón).
+- **Texto, etiquetas y encabezados:** `#FFFFFF` (Blanco Puro).
+- **Lado izquierdo** → `#00CEC8` (Verde Esmeralda).
+- **Lado derecho** → `#FF8C00` (Naranja Oscuro).
+
+### Distribución por elemento
+
+#### Verde Esmeralda `#00CEC8` — lado izquierdo
+
+| Elemento | Aplicación |
+|----------|------------|
+| Logo | Marca **Elite Forge** (esquina superior izquierda) |
+| Bordes | Mitad izquierda del marco hexagonal del avatar y mitad izquierda del borde del contenedor principal |
+| Stats e iconos | Métricas del lado izquierdo: **TÉCNICO**, **PODER** |
+| Gráfico radar | Mitad izquierda del spider / radar chart central |
+| Botones | Fondo del botón **VIEW MATCHES** (texto en blanco) |
+
+#### Naranja Oscuro `#FF8C00` — lado derecho
+
+| Elemento | Aplicación |
+|----------|------------|
+| Bordes | Mitad derecha del marco hexagonal del avatar y mitad derecha del borde del contenedor principal |
+| Stats e iconos | Métricas del lado derecho: **FÍSICO**, **MENTAL** |
+| Gráfico radar | Mitad derecha del spider / radar chart central |
+| Botones | Fondo del botón **COMMUNITY HUB** (texto en blanco) |
+
+#### Gris Carbón `#424242` — fondos
+
+- Pantallas principales en modo oscuro.
+- Barras inferiores (ej. **RANKING GLOBAL: #342**).
+- Contenedores secundarios y áreas de apoyo visual.
+
+#### Blanco Puro `#FFFFFF` — tipografía
+
+- Títulos de pantalla (ej. **LOG IN**).
+- Nombres de usuario y etiquetas de nivel.
+- Texto dentro de botones de acción sobre fondos de color.
+- Iconografía y datos numéricos sobre fondos oscuros.
+
+### Referencia visual
+
+La pantalla de login / perfil de referencia aplica esta distribución en un layout centrado:
+
+```
+┌─────────────────────────────────────┐
+│  Elite Forge (verde)     [status]   │
+│           LOG IN 🔥                 │
+│    ┌─────────────────────┐        │
+│    │  avatar hexagonal   │        │
+│    │ verde │ naranja     │        │
+│    │   DAVID MARTÍNEZ    │        │
+│    │   LEVEL 14          │        │
+│    │  [radar bicolor]    │        │
+│    │ TÉCNICO │ FÍSICO    │        │
+│    │ PODER   │ MENTAL    │        │
+│    └─────────────────────┘        │
+│  [VIEW MATCHES] [COMMUNITY HUB]     │
+│  verde          naranja             │
+│  RANKING GLOBAL: #342               │
+└─────────────────────────────────────┘
+  fondo: #424242  ·  texto: #FFFFFF
+```
+
+> Guía de colores para UI en `apps/mobile/`. Identidad de marca y logo en [docs/ELITE_FORGE.md](./docs/ELITE_FORGE.md#logo-e-identidad-de-marca).
 
 ## Requisitos Previos
 
@@ -163,7 +261,7 @@ bash infrastructure/aws/scripts/deploy.sh
 git init
 git add .
 git commit -m "feat: initial monorepo setup"
-git remote add origin https://github.com/TU_USUARIO/EF.git
+git remote add origin https://github.com/davidcalvoelite-lang/EF.git
 git push -u origin main
 ```
 
