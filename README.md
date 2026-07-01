@@ -5,6 +5,7 @@ Monorepo técnico de **Elite Forge** — aplicación móvil de fútbol con perfi
 | Documento | Descripción |
 |-----------|-------------|
 | **[docs/ELITE_FORGE.md](./docs/ELITE_FORGE.md)** | Producto, lógica de negocio, logo, módulos funcionales |
+| **[docs/FRONTEND.md](./docs/FRONTEND.md)** | Implementación técnica del mobile, changelog |
 | Este README | Stack técnico, inicio rápido, infraestructura y despliegue |
 
 ## Resumen del producto
@@ -135,6 +136,10 @@ La pantalla de login / perfil de referencia aplica esta distribución en un layo
 ```
 
 > Guía de colores para UI en `apps/mobile/`. Identidad de marca y logo en [docs/ELITE_FORGE.md](./docs/ELITE_FORGE.md#logo-e-identidad-de-marca).
+
+### UI responsiva (Android e iOS)
+
+Toda pantalla nueva debe ser responsiva. Usar el hook `apps/mobile/app/hooks/useResponsiveLayout.ts` y seguir la regla en `.cursor/rules/mobile-responsive-ui.mdc`.
 
 ## Requisitos Previos
 
