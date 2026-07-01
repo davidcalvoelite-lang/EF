@@ -97,7 +97,7 @@ export function App() {
 
   // otherwise, we're ready to render the app
   return (
-    <TamaguiProvider config={tamaguiConfig} defaultTheme="light">
+    <TamaguiProvider config={tamaguiConfig} defaultTheme="dark">
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
         <KeyboardProvider>
           <AuthProvider>

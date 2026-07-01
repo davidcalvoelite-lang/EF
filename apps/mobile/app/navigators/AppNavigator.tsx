@@ -9,8 +9,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
 import Config from "@/config"
 import { useAuth } from "@/context/AuthContext"
+import { eliteForgeColors } from "@/theme/eliteForgeColors"
 import { ErrorBoundary } from "@/screens/ErrorScreen/ErrorBoundary"
-import { LoginScreen } from "@/screens/LoginScreen"
+import { LoginScreen } from "@/screens/auth/LoginScreen"
+import { RegisterScreen } from "@/screens/auth/RegisterScreen"
 import { WelcomeScreen } from "@/screens/WelcomeScreen"
 import { useAppTheme } from "@/theme/context"
 
@@ -38,9 +40,9 @@ const AppStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        navigationBarColor: colors.background,
+        navigationBarColor: eliteForgeColors.carbon,
         contentStyle: {
-          backgroundColor: colors.background,
+          backgroundColor: eliteForgeColors.carbon,
         },
       }}
       initialRouteName={isAuthenticated ? "Welcome" : "Login"}
@@ -54,6 +56,7 @@ const AppStack = () => {
       ) : (
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Register" component={RegisterScreen} />
         </>
       )}
 
