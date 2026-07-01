@@ -1,0 +1,53 @@
+---
+description: Registrar y actualizar docs/FRONTEND.md tras cada cambio en el frontend móvil
+globs: apps/mobile/**
+alwaysApply: false
+---
+
+# Documentación frontend — FRONTEND.md
+
+Todo cambio realizado en el frontend móvil (`apps/mobile/`) **debe quedar registrado** en `docs/FRONTEND.md` en la misma sesión de trabajo, antes de dar por terminada la tarea.
+
+## Cuándo actualizar
+
+Actualiza `docs/FRONTEND.md` si modificas cualquiera de estos ámbitos:
+
+- Pantallas (`app/screens/`)
+- Componentes UI (`app/components/ui/`)
+- Hooks de layout o animación (`app/hooks/`)
+- Navegación (`app/navigators/`)
+- Tema, tokens o Tamagui (`app/theme/`, `tamagui.config.ts`)
+- Assets de la app (`assets/`)
+- i18n del mobile (`app/i18n/`)
+- Dependencias o scripts en `apps/mobile/package.json`
+
+## Qué registrar
+
+1. **Registro de cambios** — Añade entradas en la sección «Registro de cambios» con `[x]` al completar.
+2. **Overview / estado** — Ajusta tablas de estado si cambia el alcance (ej. nueva pantalla, backend conectado).
+3. **Componentes / pantallas** — Actualiza catálogos si creas o renombras componentes.
+4. **Dependencias** — Documenta paquetes nuevos o versiones relevantes.
+5. **Comandos o notas de desarrollo** — Si cambia cómo se ejecuta o construye la app.
+
+## Formato de entrada en el changelog
+
+```markdown
+- [x] Breve descripción del cambio — archivos o área afectada (fecha opcional)
+```
+
+Ejemplo:
+
+```markdown
+- [x] Pantalla Register con formulario completo — `RegisterScreen.tsx`, claves i18n
+```
+
+## No omitir
+
+- No cierres una tarea de frontend sin revisar si `docs/FRONTEND.md` necesita actualización.
+- Si el cambio es solo un fix menor de estilo, igualmente añade una línea al registro.
+- Mantén el documento en **español**, coherente con el resto de `docs/`.
+
+## Referencia cruzada
+
+- Producto y negocio: `docs/ELITE_FORGE.md`
+- UI responsiva: regla `mobile-responsive-ui.mdc`

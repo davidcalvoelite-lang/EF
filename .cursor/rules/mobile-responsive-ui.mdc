@@ -1,0 +1,50 @@
+---
+description: Estándares de UI responsiva para pantallas mobile (Android e iOS) con React Native, Ignite y Tamagui
+globs: apps/mobile/app/**/*.tsx
+alwaysApply: false
+---
+
+# UI Responsiva — Elite Forge Mobile
+
+Toda pantalla nueva o modificación de UI en `apps/mobile` **debe ser responsiva en Android e iOS**.
+
+## Stack obligatorio
+
+- React Native + Ignite + Tamagui
+- `useWindowDimensions` y `useSafeAreaInsets` para layout adaptativo
+- Hook compartido: `app/hooks/useResponsiveLayout.ts`
+
+## Reglas de implementación
+
+1. **Safe areas**: respetar `insets.top`, `insets.bottom` en padding vertical.
+2. **Ancho máximo**: contenido centrado con `maxWidth` (usar `contentMaxWidth` del hook).
+3. **Padding horizontal**: proporcional al ancho de pantalla, nunca fijo en px grandes.
+4. **Tipografía y espaciado**: escalar según `isSmallScreen` / `isTablet`.
+5. **Teclado**: envolver formularios en `KeyboardAvoidingView` (`padding` en iOS, `height` en Android).
+6. **Scroll**: pantallas con formularios deben usar `ScrollView` con `keyboardShouldPersistTaps="handled"`.
+7. **Imágenes locales**: usar `Image` de `react-native` con `resizeMode="contain"`, no Tamagui `Image` con `require()`.
+8. **Botones con icono**: icono en `position="absolute"` a la izquierda; texto centrado con `textAlign="center"`.
+
+## Patrón base
+
+```tsx
+const { horizontalPadding, contentMaxWidth, sectionGap, insets } = useResponsiveLayout()
+
+<ScrollView contentContainerStyle={{
+  paddingTop: insets.top + 20,
+  paddingBottom: insets.bottom + 24,
+  paddingHorizontal: horizontalPadding,
+  alignItems: "center",
+}}>
+  <YStack width="100%" maxWidth={contentMaxWidth} gap={sectionGap}>
+    {/* contenido */}
+  </YStack>
+</ScrollView>
+```
+
+## Probar en
+
+- Teléfono pequeño (altura < 700)
+- Teléfono estándar
+- Tablet (ancho ≥ 768)
+- Android e iOS (emulador o dispositivo físico)

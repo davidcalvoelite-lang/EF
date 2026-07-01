@@ -17,24 +17,38 @@ El repositorio `EF` contiene el monorepo técnico (mobile, backend, infraestruct
 
 ![Logo Elite Forge](./assets/elite-forge-logo.png)
 
-> **Asset:** colocar el logo oficial en `docs/assets/elite-forge-logo.png`.
+### Ubicación del asset (reutilizable)
 
-### Composición del logo
+| Ubicación | Uso |
+|-----------|-----|
+| `docs/assets/elite-forge-logo.png` | **Fuente oficial** del repositorio y documentación |
+| `apps/mobile/assets/images/elite-forge-logo.png` | App móvil (importado por `EliteForgeLogo`) |
+
+En código React Native:
+
+```tsx
+import { EliteForgeLogo } from "@/components/ui"
+
+<EliteForgeLogo />
+```
+
+### Composición del logo (versión actual)
 
 | Elemento | Descripción | Color |
 |----------|-------------|-------|
-| Barra superior | Pieza tipo martillo / forja con detalles mecánicos | Verde Esmeralda `#00CEC8` |
-| Escudo | Forma de escudo con franjas verticales (centro verde, laterales gris) | `#00CEC8` + `#424242` |
-| Balón central | Balón de fútbol en tonos grises | Gris Carbón `#424242` |
-| Anillo dinámico | Espiral de energía alrededor del balón (movimiento / forja) | Naranja Oscuro `#FF8C00` |
-| Tipografía **ELITE** | Nombre principal, fuente futurista | Verde Esmeralda `#00CEC8` |
-| Tipografía **FORGE** | Subtítulo bajo ELITE | Gris Carbón `#424242` |
+| Fondo | **Transparente** (sin color de fondo en el PNG) | — |
+| Barra superior | Pieza tipo yunque / martillo con detalles geométricos | Verde Esmeralda `#00CEC8` |
+| Escudo / yunque | Franjas verticales centradas que convergen en punta inferior | Centro `#00CEC8`, laterales gris |
+| Balón central | Balón de fútbol con paneles definidos | Gris + negro |
+| Anillo dinámico | Espiral de energía alrededor del balón | Naranja Oscuro `#FF8C00` |
+| Tipografía **ELITE** | Nombre principal, mayúsculas, estilo futurista | Verde Esmeralda `#00CEC8` |
+| Tipografía **FORGE** | Subtítulo bajo ELITE | Gris medio |
 
 ### Estilo visual
 
-Estética **futurista e industrial** que fusiona el concepto de *forja* (martillo, metal, energía) con el fútbol (balón, dinamismo). Debe usarse sobre fondo oscuro (`#424242` o negro) para maximizar contraste.
+Estética **futurista e industrial** que fusiona el concepto de *forja* (yunque, metal, energía) con el fútbol (balón, dinamismo). Diseño vertical y simétrico, pensado para fondos oscuros — idealmente **Gris Carbón `#424242`**.
 
-> Asset oficial del repositorio: `docs/assets/elite-forge-logo.png`
+> **Formato del asset:** PNG con canal alpha (fondo transparente). Si al adjuntar el logo en el chat o exportarlo desde ciertas herramientas el archivo pierde transparencia, el fondo puede aplanarse a negro y verse como un recuadro en la app. El asset oficial en `docs/assets/` conserva transparencia real.
 
 ---
 
